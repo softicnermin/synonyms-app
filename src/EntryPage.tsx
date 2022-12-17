@@ -7,7 +7,7 @@ const EntryPage = () => {
     const [isSaving, setIsSaving] = useState(false);
     const [synonym, setSynonym] = useState('');
 
-    const saveSynonym = () => {
+    const saveSynonym = async () => {
         console.log(`Word: ${word} | Synonym: ${synonym}`);
         setIsSaving(true);
         const payload = {
@@ -21,8 +21,8 @@ const EntryPage = () => {
             })
         };
 
-        fetch(`${process.env.REACT_APP_API_ENDPOINT}/synonym`, payload)
-        .then(async (response) => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/synonym`, payload);
             const data = await response.json();
 
             if (!response.ok) {
@@ -34,12 +34,11 @@ const EntryPage = () => {
             setWord('');
             setSynonym('');
             setIsSaving(false);
-        })
-        .catch((err) => {
+        } catch(err: any) {
             setError(err.toString());
             setIsSaving(false);
             console.log(`There was an error! ${err}`);
-        });
+        }
     }
 
     return (

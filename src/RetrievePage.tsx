@@ -7,7 +7,7 @@ const RetrievePage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [synonyms, setSynonyms] = useState([]);
 
-    const getSynonyms = () => {
+    const getSynonyms = async () => {
         console.log(`Word: ${word} | Synonym: ${synonyms}`);
         setIsLoading(true);
         const payload = {
@@ -17,8 +17,8 @@ const RetrievePage = () => {
             },
         };
 
-        fetch(`${process.env.REACT_APP_API_ENDPOINT}/synonym/${word}`, payload)
-        .then(async (response) => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/synonym/${word}`, payload);
             const data = await response.json();
 
             if (!response.ok) {
@@ -30,12 +30,11 @@ const RetrievePage = () => {
             setMessage(message);
             setSynonyms(data.synonyms);
             setIsLoading(false);
-        })
-        .catch((err) => {
+        } catch(err: any) {
             setError(err.toString());
             setIsLoading(false);
             console.log(`There was an error! ${err}`);
-        });
+        }
     }
 
     return (
