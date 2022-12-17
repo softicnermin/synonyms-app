@@ -56,7 +56,7 @@ const EntryPage = () => {
                         />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="synonym" className="form-label">Password</label>
+                    <label htmlFor="synonym" className="form-label">Synonym</label>
                     <input
                         className="form-control"
                         id="synonym"

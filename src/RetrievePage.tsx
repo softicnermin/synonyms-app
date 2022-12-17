@@ -53,7 +53,7 @@ const RetrievePage = () => {
                 </div>
                 {synonyms.length > 0 &&
                     <div>
-                        <h5>Synonyms</h5>
+                        <h5>Synonyms ({synonyms.length})</h5>
                         <ul className="list-group">
                             {synonyms.map(el => (
                                 <li
@@ -64,6 +64,11 @@ const RetrievePage = () => {
                                 </li>
                             ))}
                         </ul>
+                    </div>
+                }
+                {isLoading &&
+                    <div className="spinner-border text-primary" role="status">
+                        <span className="visually-hidden">Loading...</span>
                     </div>
                 }
                 {message &&
