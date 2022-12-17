@@ -1,8 +1,5 @@
 import { useState } from "react";
 
-const url1 = 'https://synonymapi.onrender.com/synonym';
-const url2 = 'http://localhost:3000/synonym'
-
 const EntryPage = () => {
     const [word, setWord] = useState('');
     const [synonym, setSynonym] = useState('');
@@ -20,8 +17,7 @@ const EntryPage = () => {
             })
         };
 
-
-        fetch(url2, payload)
+        fetch(`${process.env.REACT_APP_API_ENDPOINT}/synonym`, payload)
         .then((res) => res.json())
         .then((result) => console.log(result))
         .catch((err) => console.log(err));
