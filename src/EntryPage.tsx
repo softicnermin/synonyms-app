@@ -2,10 +2,14 @@ import { useState } from "react";
 
 const EntryPage = () => {
     const [word, setWord] = useState('');
+    const [message, setMessage] = useState('');
+    const [error, setError] = useState('');
+    const [isSaving, setIsSaving] = useState(false);
     const [synonym, setSynonym] = useState('');
 
     const saveSynonym = () => {
         console.log(`Word: ${word} | Synonym: ${synonym}`);
+        setIsSaving(true);
         const payload = {
             method: 'POST',
             headers: {
@@ -18,9 +22,24 @@ const EntryPage = () => {
         };
 
         fetch(`${process.env.REACT_APP_API_ENDPOINT}/synonym`, payload)
-        .then((res) => res.json())
-        .then((result) => console.log(result))
-        .catch((err) => console.log(err));
+        .then(async (response) => {
+            const data = await response.json();
+
+            if (!response.ok) {
+                setError(`Error: ${response.status}`);
+                return;
+            }
+
+            setMessage(data.message);
+            setWord('');
+            setSynonym('');
+            setIsSaving(false);
+        })
+        .catch((err) => {
+            setError(err.toString());
+            setIsSaving(false);
+            console.log(`There was an error! ${err}`);
+        });
     }
 
     return (
@@ -46,11 +65,34 @@ const EntryPage = () => {
                     />
                 </div>
                 <button
-                    className="btn btn-primary"
+                    className="btn btn-primary mb-2"
                     onClick={saveSynonym}
+                    disabled={isSaving}
                 >
                     Submit
                 </button>
+                {message &&
+                    <div className="alert alert-primary alert-dismissible " role="alert">
+                        {message}
+                        <button
+                            type="button"
+                            className="btn-close"
+                            aria-label="Close"
+                            onClick={() => setMessage('')}
+                        />
+                    </div>
+                }
+                {error &&
+                    <div className="alert alert-danger alert-dismissible " role="alert">
+                        {error}
+                        <button
+                            type="button"
+                            className="btn-close"
+                            aria-label="Close"
+                            onClick={() => setError('')}
+                        />
+                    </div>
+                }
             </div>
       </div>
     )
