@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const WORD_REGEX = new RegExp(/\[^a-zA-Z0-9_]/);
+
 const EntryPage = () => {
     const [word, setWord] = useState('');
     const [message, setMessage] = useState('');
@@ -7,8 +9,16 @@ const EntryPage = () => {
     const [isSaving, setIsSaving] = useState(false);
     const [synonym, setSynonym] = useState('');
 
+    const isWord = (word: string) => {
+        console.log(WORD_REGEX.test(word));
+        return WORD_REGEX.test(word);
+    }
     const saveSynonym = async () => {
         console.log(`Word: ${word} | Synonym: ${synonym}`);
+        // if (!isWord(word) || !isWord(synonym)){
+        //     setError('Please enter valid words');
+        //     return;
+        // };
         setIsSaving(true);
         const payload = {
             method: 'POST',
@@ -49,7 +59,6 @@ const EntryPage = () => {
                     <label htmlFor="inputWord" className="form-label">Word</label>
                     <input
                         className="form-control"
-                        id="inputWord"
                         value={word}
                         onChange={e => setWord(e.target.value)}
                         />
@@ -58,7 +67,6 @@ const EntryPage = () => {
                     <label htmlFor="synonym" className="form-label">Synonym</label>
                     <input
                         className="form-control"
-                        id="synonym"
                         value={synonym}
                         onChange={e => setSynonym(e.target.value)}
                     />
@@ -66,7 +74,7 @@ const EntryPage = () => {
                 <button
                     className="btn btn-primary mb-2"
                     onClick={saveSynonym}
-                    disabled={isSaving}
+                    disabled={isSaving || word === '' || synonym === ''}
                 >
                     Submit
                 </button>

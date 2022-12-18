@@ -1,0 +1,172 @@
+$black-50: rgba(0, 0, 0, 0.02);
+$black-100: rgba(0, 0, 0, 0.04);
+$black-200: rgba(0, 0, 0, 0.08);
+$black-300: rgba(0, 0, 0, 0.13);
+$black-400: rgba(0, 0, 0, 0.26);
+$black-500: rgba(0, 0, 0, 0.38);
+$black-600: rgba(0, 0, 0, 0.54);
+$black-700: rgba(0, 0, 0, 0.62);
+$black-800: rgba(0, 0, 0, 0.74);
+$black-900: rgba(0, 0, 0, 0.87);
+
+/*
+    Redefine spacing. You can now use
+    these values on bootstrap classes,
+    e.g. className='mb-36' would set
+    bottom margin to 36px (3.6rem). For padding,
+    replace 'm' with 'p' (e.g. 'pb-36')
+*/
+$spacer: 0.1rem;
+$spacers: (
+        '0': (
+                $spacer * 0,
+        ),
+        '1': (
+                $spacer * 1,
+        ),
+        '2': (
+                $spacer * 2,
+        ),
+        '4': (
+                $spacer * 4,
+        ),
+        '5': (
+                $spacer * 5,
+        ),
+        '6': (
+                $spacer * 6,
+        ),
+        '8': (
+                $spacer * 8,
+        ),
+        '10': (
+                $spacer * 10,
+        ),
+        '12': (
+                $spacer * 12,
+        ),
+        '14': (
+                $spacer * 14,
+        ),
+        '16': (
+                $spacer * 16,
+        ),
+        '20': (
+                $spacer * 20,
+        ),
+        '24': (
+                $spacer * 24,
+        ),
+        '28': (
+                $spacer * 28,
+        ),
+        '30': (
+                $spacer * 30,
+        ),
+        '32': (
+                $spacer * 32,
+        ),
+        '34': (
+                $spacer * 34,
+        ),
+        '36': (
+                $spacer * 36,
+        ),
+        '40': (
+                $spacer * 40,
+        ),
+        '48': (
+                $spacer * 48,
+        ),
+        '60': (
+                $spacer * 60,
+        ),
+        '72': (
+                $spacer * 72,
+        ),
+        '150': (
+                $spacer * 150,
+        ),
+);
+
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap/scss/variables.scss';
+
+body {
+  background: #f5f4f5;
+}
+
+.search-input {
+  height: 100%;
+  z-index: 20;
+  background-color: white;
+  box-shadow: none;
+  &--focus {
+    box-shadow: 0px 1px 6px rgb(64 60 67 / 20%);
+    background-color: white;
+  }
+  input {
+    outline: none;
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      .search-input {
+        box-shadow: 0px 1px 6px rgb(64 60 67 / 20%);
+      }
+    }
+  }
+  .btn {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+  .btn-close {
+    color: rgba(0, 0, 0, 0.54);
+    box-shadow: none;
+  }
+}
+
+.text-black-600 {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.bg-synonym {
+  background-color: rgba(108, 99, 255, 0.87);
+}
+
+.menu {
+  width: 360px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 5000;
+  left: 0;
+  background-color: white;
+  transform: translate3d(-360px, 0, 0);
+  transition: transform 0.35s;
+
+  &__visible {
+    transform: translate3d(0, 0, 0);
+  }
+
+  &__item {
+    color: $black-800;
+    font-weight: 600;
+    align-items: center;
+    width: 100%;
+    border-radius: 0 48px 48px 0;
+    &:hover {
+      background: $black-100;
+      color: $black-800;
+    }
+  }
+  .active {
+    border-radius: 0 48px 48px 0;
+    background: $blue-100;
+    color: $blue;
+  }
+}
+
+.pointer-cursor {
+  cursor: pointer;
+}

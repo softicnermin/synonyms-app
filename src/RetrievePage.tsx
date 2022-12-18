@@ -1,13 +1,36 @@
-import { useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
+import { ReactComponent as Books } from './assets/searching.svg'
+import classNames from "classnames";
+import SynonymsList from "./components/SynonymsList";
 
 const RetrievePage = () => {
+    const ref = useRef<HTMLInputElement>(null);
+    const [inputFocused, setInputFocused] = useState(false);
     const [word, setWord] = useState('');
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [synonyms, setSynonyms] = useState([]);
 
+    useEffect(() => {
+        if (ref.current) {
+            ref.current.focus();
+        }
+    }, []);
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.code === 'Enter') getSynonyms().then(r => {});
+    }
+
+    const clearAll = () => {
+        setMessage('');
+        setError('');
+        setWord('');
+        setSynonyms([]);
+    }
+
     const getSynonyms = async () => {
+        if (word === '') return;
         console.log(`Word: ${word} | Synonym: ${synonyms}`);
         setIsLoading(true);
         const payload = {
@@ -33,38 +56,59 @@ const RetrievePage = () => {
         } catch(err: any) {
             setError(err.toString());
             setIsLoading(false);
-            console.log(`There was an error! ${err}`);
         }
     }
 
     return (
         <div className="container">
-            <h4 className="p-12">Enter word and get synonyms</h4>
-            <div>
-                <div className="mb-3">
-                    <label htmlFor="inputWord" className="form-label">Word</label>
-                    <input
-                        className="form-control"
-                        id="inputWord"
-                        value={word}
-                        onChange={e => setWord(e.target.value)}
-                        />
-                </div>
-                {synonyms.length > 0 &&
-                    <div>
-                        <h5>Synonyms ({synonyms.length})</h5>
-                        <ul className="list-group">
-                            {synonyms.map(el => (
-                                <li
-                                    key={el}
-                                    className="list-group-item"
-                                >
-                                    {el}
-                                </li>
-                            ))}
-                        </ul>
+            <div className="d-flex flex-column justify-content-center align-items-center mb-4">
+                <Books />
+                <h4 className="mt-4 p-12">Need help finding the perfect word?</h4>
+                <span className="p-12">Enter a word and explore it's synonyms</span>
+            </div>
+            <div className="search-container">
+                <div className={classNames(
+                    'search-input row mx-0 border rounded-4',
+                    {
+                        'search-input--focus': inputFocused,
+                    },
+                )}>
+                    <div className="row ms-0 me-0 my-2 mb-3">
+                        <button
+                            className="border-0 bg-white col-1 p-0 d-flex align-items-center"
+                            onClick={getSynonyms}
+                            disabled={isLoading}
+                            title="Search"
+                        >
+                            <i className="material-icons ps-3 py-12 text-black-600">
+                                search
+                            </i>
+                        </button>
+                        <div className="col-10 p-0">
+                            <input
+                                ref={ref}
+                                placeholder="Enter word"
+                                className="border-0 py-12 form-control"
+                                value={word}
+                                onFocus={() => setInputFocused(true)}
+                                onBlur={() => setInputFocused(false)}
+                                onChange={e => setWord(e.target.value)}
+                                onKeyDown={e => handleKeyDown(e)}
+                            />
+                        </div>
+                        <div className="col-1 ps-4 align-items-center d-flex">
+                            <button
+                                className="btn-close text-black-600 text-decoration-none"
+                                onClick={clearAll}
+                                title="Clear"
+                            />
+                        </div>
                     </div>
-                }
+                </div>
+            </div>
+
+            <div className="my-16">
+                <SynonymsList synonymsList={synonyms} />
                 {isLoading &&
                     <div className="spinner-border text-primary" role="status">
                         <span className="visually-hidden">Loading...</span>
@@ -81,13 +125,7 @@ const RetrievePage = () => {
                         />
                     </div>
                 }
-                <button
-                    className="btn btn-primary my-2"
-                    onClick={getSynonyms}
-                    disabled={isLoading}
-                >
-                    Get synonyms
-                </button>
+
                 {error &&
                     <div className="alert alert-danger alert-dismissible " role="alert">
                         {error}
