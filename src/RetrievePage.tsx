@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
-import { ReactComponent as Books } from './assets/searching.svg'
 import classNames from "classnames";
+
+import { ReactComponent as Illustration } from './assets/searching.svg'
 import SynonymsList from "./components/SynonymsList";
 
 const RetrievePage = () => {
@@ -19,7 +20,7 @@ const RetrievePage = () => {
     }, []);
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.code === 'Enter') getSynonyms().then(r => {});
+        if (e.code === 'Enter') getSynonyms().then(() => {});
     }
 
     const clearAll = () => {
@@ -62,7 +63,7 @@ const RetrievePage = () => {
     return (
         <div className="container">
             <div className="d-flex flex-column justify-content-center align-items-center mb-4">
-                <Books />
+                <Illustration />
                 <h4 className="mt-4 p-12">Need help finding the perfect word?</h4>
                 <span className="p-12">Enter a word and explore it's synonyms</span>
             </div>
@@ -80,7 +81,7 @@ const RetrievePage = () => {
                             disabled={isLoading}
                             title="Search"
                         >
-                            <i className="material-icons ps-3 py-12 text-black-600">
+                            <i className="material-icons ps-md-3 py-12 text-black-600">
                                 search
                             </i>
                         </button>
@@ -96,7 +97,7 @@ const RetrievePage = () => {
                                 onKeyDown={e => handleKeyDown(e)}
                             />
                         </div>
-                        <div className="col-1 ps-4 align-items-center d-flex">
+                        <div className="col-1 ps-4 d-flex align-items-center justify-content-center">
                             <button
                                 className="btn-close text-black-600 text-decoration-none"
                                 onClick={clearAll}
