@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import MessageInfo from "./components/MessageInfo";
 
 const WORD_REGEX = new RegExp(/\[^a-zA-Z0-9_]/);
 
@@ -78,28 +79,8 @@ const EntryPage = () => {
                 >
                     Submit
                 </button>
-                {message &&
-                    <div className="alert alert-primary alert-dismissible " role="alert">
-                        {message}
-                        <button
-                            type="button"
-                            className="btn-close"
-                            aria-label="Close"
-                            onClick={() => setMessage('')}
-                        />
-                    </div>
-                }
-                {error &&
-                    <div className="alert alert-danger alert-dismissible " role="alert">
-                        {error}
-                        <button
-                            type="button"
-                            className="btn-close"
-                            aria-label="Close"
-                            onClick={() => setError('')}
-                        />
-                    </div>
-                }
+                <MessageInfo message={message} action={setMessage} />
+                <MessageInfo message={error} action={setError} danger={true}/>
             </div>
       </div>
     )
