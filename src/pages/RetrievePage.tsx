@@ -1,9 +1,9 @@
 import React, {useEffect, useRef, useState} from "react";
 import classNames from "classnames";
 
-import { ReactComponent as Illustration } from './assets/searching.svg'
-import SynonymsList from "./components/SynonymsList";
-import MessageInfo from "./components/MessageInfo";
+import { ReactComponent as Illustration } from '../assets/searching.svg'
+import SynonymsList from "../components/SynonymsList";
+import MessageInfo from "../components/MessageInfo";
 
 const RetrievePage = () => {
     const ref = useRef<HTMLInputElement>(null);

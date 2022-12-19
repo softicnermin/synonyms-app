@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MessageInfo from "./components/MessageInfo";
+import MessageInfo from "../components/MessageInfo";
 
 const WORD_REGEX = new RegExp(/^[a-zA-Z ]+$/);
 const MAX_WORD_LENGTH = 35;
@@ -16,11 +16,14 @@ const EntryPage = () => {
         return WORD_REGEX.test(word) && word.length < MAX_WORD_LENGTH;
     }
     const saveSynonym = async () => {
-        console.log(`Word: ${word} | Synonym: ${synonym}`);
-        if (!isWord(word) || !isWord(synonym)){
+        if (!isWord(word)
+            || !isWord(synonym)
+            || word === synonym
+        ){
             setError('Please enter valid words');
             return;
-        };
+        }
+
         setIsSaving(true);
         const payload = {
             method: 'POST',

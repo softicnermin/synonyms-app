@@ -4,8 +4,8 @@ import { Route, Routes } from "react-router";
 import Header from "./components/Header";
 
 function App() {
-    const RetrievePage = lazy(() => import('./RetrievePage'));
-    const EntryPage = lazy(() => import('./EntryPage'));
+    const RetrievePage = lazy(() => import('./pages/RetrievePage'));
+    const EntryPage = lazy(() => import('./pages/EntryPage'));
   return (
     <div>
         <Header />
