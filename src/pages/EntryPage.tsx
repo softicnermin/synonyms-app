@@ -12,7 +12,6 @@ const EntryPage = () => {
     const [synonym, setSynonym] = useState('');
 
     const isWord = (word: string) => {
-        console.log(WORD_REGEX.test(word));
         return WORD_REGEX.test(word) && word.length < MAX_WORD_LENGTH;
     }
     const saveSynonym = async () => {

@@ -1,6 +1,6 @@
 import React from "react";
 
-type Props = {
+export interface Props {
     synonymsList: string[]
 }
 
@@ -9,7 +9,7 @@ const SynonymsList = ({ synonymsList } :Props) => {
 
     return(
         <div>
-            <h5 className="mb-4">Synonyms ({synonymsList.length})</h5>
+            <h5 data-testid="list-title" className="mb-4">Synonyms ({synonymsList.length})</h5>
             <div className="d-flex flex-wrap">
             {synonymsList.map(el => (
                     <h4
