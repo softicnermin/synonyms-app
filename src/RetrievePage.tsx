@@ -33,7 +33,6 @@ const RetrievePage = () => {
 
     const getSynonyms = async () => {
         if (word === '') return;
-        console.log(`Word: ${word} | Synonym: ${synonyms}`);
         setIsLoading(true);
         const payload = {
             method: 'GET',
