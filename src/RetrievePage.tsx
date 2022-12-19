@@ -3,6 +3,7 @@ import classNames from "classnames";
 
 import { ReactComponent as Illustration } from './assets/searching.svg'
 import SynonymsList from "./components/SynonymsList";
+import MessageInfo from "./components/MessageInfo";
 
 const RetrievePage = () => {
     const ref = useRef<HTMLInputElement>(null);
@@ -76,7 +77,7 @@ const RetrievePage = () => {
                 )}>
                     <div className="row ms-0 me-0 my-2 mb-3">
                         <button
-                            className="border-0 bg-white col-1 p-0 d-flex align-items-center"
+                            className="btn-search col-1 border-0 bg-white p-0 d-flex align-items-center"
                             onClick={getSynonyms}
                             disabled={isLoading}
                             title="Search"
@@ -115,29 +116,8 @@ const RetrievePage = () => {
                         <span className="visually-hidden">Loading...</span>
                     </div>
                 }
-                {message &&
-                    <div className="alert alert-primary alert-dismissible " role="alert">
-                        {message}
-                        <button
-                            type="button"
-                            className="btn-close"
-                            aria-label="Close"
-                            onClick={() => setMessage('')}
-                        />
-                    </div>
-                }
-
-                {error &&
-                    <div className="alert alert-danger alert-dismissible " role="alert">
-                        {error}
-                        <button
-                            type="button"
-                            className="btn-close"
-                            aria-label="Close"
-                            onClick={() => setError('')}
-                        />
-                    </div>
-                }
+                <MessageInfo message={message} action={setMessage} />
+                <MessageInfo message={error} action={setError} danger={true}/>
             </div>
       </div>
     )

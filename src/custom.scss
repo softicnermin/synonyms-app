@@ -120,6 +120,13 @@ body {
       background-color: rgba(0, 0, 0, 0.04);
     }
   }
+  .btn-search {
+    &:hover {
+      i {
+        color: rgba(0, 0, 0, 0.87);
+      }
+    }
+  }
   .btn-close {
     color: rgba(0, 0, 0, 0.54);
     box-shadow: none;
