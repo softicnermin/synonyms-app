@@ -19,6 +19,7 @@ const NavigationSidebar = ({
                 menu__visible: visible,
             })}
             ref={ref}
+            role="navigation"
         >
             <div className="body-3 text-black-700 m-24 mb-40">
                 Switch between search and input

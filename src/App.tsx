@@ -7,15 +7,15 @@ function App() {
     const RetrievePage = lazy(() => import('./pages/RetrievePage'));
     const EntryPage = lazy(() => import('./pages/EntryPage'));
   return (
-    <div>
-        <Header />
+    <>
         <Suspense>
+            <Header />
             <Routes>
                 <Route path="/" element={<RetrievePage />} />
                 <Route path="/new" element={<EntryPage />} />
             </Routes>
         </Suspense>
-    </div>
+    </>
   );
 }
 
