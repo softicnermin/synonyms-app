@@ -49,9 +49,6 @@ const RetrievePage = () => {
                 setError(`Error: ${response.status}`);
                 return;
             }
-
-            const message = data.synonyms.length === 0 ? 'No synonyms found!' : ''
-            setMessage(message);
             setSynonyms(data.synonyms);
             setIsLoading(false);
         } catch(err: any) {

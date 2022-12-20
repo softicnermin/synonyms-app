@@ -1,17 +1,17 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import SynonymsList, { Props } from "./SynonymsList";
+import SynonymsList from "./SynonymsList";
 
-function renderSynonymList(props: Partial<Props> = {}){
-    let defaultProps = {
-        synonymsList: []
-    };
+describe('SynonymList', () => {
+    test('should render the synonyms list with one item', function () {
+        render(<SynonymsList synonymsList={ ['test']}/>);
+        expect(screen.getByTestId('list-title')).toHaveTextContent("Synonyms (1)")
+    })
 
-    return render(<SynonymsList {...defaultProps} {...props} />)
-}
+    test('should render message no synonyms found', function () {
+        render(<SynonymsList synonymsList={ []}/>);
+        expect(screen.getByText('No synonyms found!')).toBeInTheDocument();
+    })
 
-test('should render the synonyms list', function () {
-    render(<SynonymsList synonymsList={ ['test']}/>);
-    //renderSynonymList();
-    expect(screen.getByTestId('list-title')).toHaveTextContent("Synonyms (1)")
-})
+});
+
