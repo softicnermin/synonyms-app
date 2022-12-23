@@ -5,6 +5,8 @@ import { ReactComponent as Illustration } from '../assets/searching.svg'
 import SynonymsList from "../components/SynonymsList";
 import MessageInfo from "../components/MessageInfo";
 
+import { sanitizeWord } from "../helpers/Util";
+
 const RetrievePage = () => {
     const ref = useRef<HTMLInputElement>(null);
     const [inputFocused, setInputFocused] = useState(false);
@@ -33,6 +35,7 @@ const RetrievePage = () => {
 
     const getSynonyms = async () => {
         if (word === '') return;
+        setMessage('');
         setIsLoading(true);
         const payload = {
             method: 'GET',
@@ -42,12 +45,15 @@ const RetrievePage = () => {
         };
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/synonym/${word}`, payload);
+            const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/synonym/${sanitizeWord(word)}`, payload);
             const data = await response.json();
 
             if (!response.ok) {
                 setError(`Error: ${response.status}`);
                 return;
+            }
+            if (data.synonyms.length === 0){
+                setMessage('No synonyms found!');
             }
             setSynonyms(data.synonyms);
             setIsLoading(false);

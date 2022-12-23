@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+
 import MessageInfo from "../components/MessageInfo";
 
-const WORD_REGEX = new RegExp(/^[a-zA-Z ]+$/);
-const MAX_WORD_LENGTH = 35;
+import { isWord, sanitizeWord } from "../helpers/Util";
 
 const EntryPage = () => {
     const [word, setWord] = useState('');
@@ -11,9 +11,6 @@ const EntryPage = () => {
     const [isSaving, setIsSaving] = useState(false);
     const [synonym, setSynonym] = useState('');
 
-    const isWord = (word: string) => {
-        return WORD_REGEX.test(word) && word.length < MAX_WORD_LENGTH;
-    }
     const saveSynonym = async () => {
         if (!isWord(word)
             || !isWord(synonym)
@@ -30,8 +27,8 @@ const EntryPage = () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                word: word,
-                newSynonym: synonym
+                firstWord: sanitizeWord(word),
+                secondWord: sanitizeWord(synonym)
             })
         };
 
