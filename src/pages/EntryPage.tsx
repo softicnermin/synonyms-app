@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import MessageInfo from "../components/MessageInfo";
+import MessageInfo from '../components/MessageInfo';
 
-import { isWord, sanitizeWord } from "../helpers/Util";
+import { isWord, sanitizeWord } from '../helpers/Util';
 
 const EntryPage = () => {
     const [word, setWord] = useState('');
@@ -12,10 +12,7 @@ const EntryPage = () => {
     const [synonym, setSynonym] = useState('');
 
     const saveSynonym = async () => {
-        if (!isWord(word)
-            || !isWord(synonym)
-            || word === synonym
-        ){
+        if (!isWord(word) || !isWord(synonym) || word === synonym) {
             setError('Please enter valid words');
             return;
         }
@@ -24,16 +21,19 @@ const EntryPage = () => {
         const payload = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 firstWord: sanitizeWord(word),
-                secondWord: sanitizeWord(synonym)
-            })
+                secondWord: sanitizeWord(synonym),
+            }),
         };
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/synonym`, payload);
+            const response = await fetch(
+                `${process.env.REACT_APP_API_ENDPOINT}/synonym`,
+                payload,
+            );
             const data = await response.json();
 
             if (!response.ok) {
@@ -46,31 +46,34 @@ const EntryPage = () => {
             setError('');
             setSynonym('');
             setIsSaving(false);
-        } catch(err: any) {
+        } catch (err: any) {
             setError(err.toString());
             setIsSaving(false);
-            console.log(`There was an error! ${err}`);
         }
-    }
+    };
 
     return (
         <div className="container">
             <h4 className="p-12">Enter word and synonym</h4>
             <div>
                 <div className="mb-3">
-                    <label htmlFor="inputWord" className="form-label">Word</label>
+                    <label htmlFor="inputWord" className="form-label">
+                        Word
+                    </label>
                     <input
                         className="form-control"
                         value={word}
-                        onChange={e => setWord(e.target.value)}
-                        />
+                        onChange={(e) => setWord(e.target.value)}
+                    />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="synonym" className="form-label">Synonym</label>
+                    <label htmlFor="synonym" className="form-label">
+                        Synonym
+                    </label>
                     <input
                         className="form-control"
                         value={synonym}
-                        onChange={e => setSynonym(e.target.value)}
+                        onChange={(e) => setSynonym(e.target.value)}
                     />
                 </div>
                 <button
@@ -81,10 +84,10 @@ const EntryPage = () => {
                     Submit
                 </button>
                 <MessageInfo message={message} action={setMessage} />
-                <MessageInfo message={error} action={setError} danger={true}/>
+                <MessageInfo message={error} action={setError} danger={true} />
             </div>
-      </div>
-    )
-}
+        </div>
+    );
+};
 
 export default EntryPage;

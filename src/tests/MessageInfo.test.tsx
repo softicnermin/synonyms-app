@@ -1,6 +1,6 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import MessageInfo from "../components/MessageInfo";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import MessageInfo from '../components/MessageInfo';
 
 describe('MessageInfo', () => {
     test('should render the primary message', () => {

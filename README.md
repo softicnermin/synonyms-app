@@ -36,5 +36,5 @@ Actions are defined in package.json. Some of the actions are:
 
 * Run tests
  ```sh
- ./run.sh -p test
+ ./run.sh test
  ```

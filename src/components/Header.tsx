@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from 'react';
 
-import NavigationSidebar from "./NavigationSidebar";
+import NavigationSidebar from './NavigationSidebar';
 
 const Header = () => {
     const [menuVisible, setMenuVisible] = useState<boolean>(false);
@@ -21,6 +21,6 @@ const Header = () => {
             </header>
         </>
     );
-}
+};
 
 export default Header;

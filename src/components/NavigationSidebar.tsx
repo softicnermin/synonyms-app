@@ -1,16 +1,14 @@
+import React from "react";
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import useClickAway from '../hooks/useClickAway';
 
 type Props = {
-    visible: Boolean;
-    setMenuVisible: Function;
+    visible: boolean;
+    setMenuVisible: (e: boolean) => void;
 };
 
-const NavigationSidebar = ({
-                               visible,
-                               setMenuVisible,
-                           }: Props) => {
+const NavigationSidebar = ({ visible, setMenuVisible }: Props) => {
     const { ref } = useClickAway({ action: setMenuVisible });
 
     return (
@@ -43,9 +41,7 @@ const NavigationSidebar = ({
                     <div className="col-auto">
                         <i className="material-icons">post_add</i>
                     </div>
-                    <div className="col-auto ps-0">
-                        Add new synonyms
-                    </div>
+                    <div className="col-auto ps-0">Add new synonyms</div>
                 </NavLink>
             </div>
         </div>

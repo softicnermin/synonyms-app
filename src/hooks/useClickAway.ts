@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 type Props = {
-    action: Function;
+    action: (visibility: boolean, event: Event ) => void;
 };
 const useClickAway = ({ action }: Props) => {
     const ref = useRef<HTMLDivElement>(null);

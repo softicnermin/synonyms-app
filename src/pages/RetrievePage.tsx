@@ -1,11 +1,11 @@
-import React, {useEffect, useRef, useState} from "react";
-import classNames from "classnames";
+import React, { useEffect, useRef, useState } from 'react';
+import classNames from 'classnames';
 
-import { ReactComponent as Illustration } from '../assets/searching.svg'
-import SynonymsList from "../components/SynonymsList";
-import MessageInfo from "../components/MessageInfo";
+import { ReactComponent as Illustration } from '../assets/searching.svg';
+import SynonymsList from '../components/SynonymsList';
+import MessageInfo from '../components/MessageInfo';
 
-import { sanitizeWord } from "../helpers/Util";
+import { sanitizeWord } from '../helpers/Util';
 
 const RetrievePage = () => {
     const ref = useRef<HTMLInputElement>(null);
@@ -24,14 +24,14 @@ const RetrievePage = () => {
 
     const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.code === 'Enter') await getSynonyms();
-    }
+    };
 
     const clearAll = () => {
         setMessage('');
         setError('');
         setWord('');
         setSynonyms([]);
-    }
+    };
 
     const getSynonyms = async () => {
         if (word === '') return;
@@ -40,43 +40,55 @@ const RetrievePage = () => {
         const payload = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
         };
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/synonym/${sanitizeWord(word)}`, payload);
+            const response = await fetch(
+                `${process.env.REACT_APP_API_ENDPOINT}/synonym/${sanitizeWord(
+                    word,
+                )}`,
+                payload,
+            );
             const data = await response.json();
 
             if (!response.ok) {
                 setError(`Error: ${response.status}`);
                 return;
             }
-            if (data.synonyms.length === 0){
+            if (data.synonyms.length === 0) {
                 setMessage('No synonyms found!');
             }
             setSynonyms(data.synonyms);
             setIsLoading(false);
-        } catch(err: any) {
+        } catch (err: any) {
+            if (typeof err.message === 'string')
             setError(err.toString());
             setIsLoading(false);
         }
-    }
+    };
 
     return (
         <div className="container">
             <div className="d-flex flex-column justify-content-center align-items-center mb-4">
                 <Illustration />
-                <h4 className="mt-4 p-12">Need help finding the perfect word?</h4>
-                <span className="p-12">Enter a word and explore it's synonyms</span>
+                <h4 className="mt-4 p-12">
+                    Need help finding the perfect word?
+                </h4>
+                <span className="p-12">
+                    Enter a word and explore it`&apos;s synonyms
+                </span>
             </div>
             <div className="search-container">
-                <div className={classNames(
-                    'search-input row mx-0 border rounded-4',
-                    {
-                        'search-input--focus': inputFocused,
-                    },
-                )}>
+                <div
+                    className={classNames(
+                        'search-input row mx-0 border rounded-4',
+                        {
+                            'search-input--focus': inputFocused,
+                        },
+                    )}
+                >
                     <div className="row ms-0 me-0 my-2 mb-3">
                         <button
                             className="btn-search col-1 border-0 bg-white p-0 d-flex align-items-center"
@@ -96,8 +108,8 @@ const RetrievePage = () => {
                                 value={word}
                                 onFocus={() => setInputFocused(true)}
                                 onBlur={() => setInputFocused(false)}
-                                onChange={e => setWord(e.target.value)}
-                                onKeyDown={e => handleKeyDown(e)}
+                                onChange={(e) => setWord(e.target.value)}
+                                onKeyDown={(e) => handleKeyDown(e)}
                             />
                         </div>
                         <div className="col-1 ps-4 d-flex align-items-center justify-content-center">
@@ -113,16 +125,16 @@ const RetrievePage = () => {
 
             <div className="my-16">
                 <SynonymsList synonymsList={synonyms} />
-                {isLoading &&
+                {isLoading && (
                     <div className="spinner-border text-primary" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
-                }
+                )}
                 <MessageInfo message={message} action={setMessage} />
-                <MessageInfo message={error} action={setError} danger={true}/>
+                <MessageInfo message={error} action={setError} danger={true} />
             </div>
-      </div>
-    )
-}
+        </div>
+    );
+};
 
 export default RetrievePage;
