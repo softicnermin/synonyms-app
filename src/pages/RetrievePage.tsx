@@ -22,8 +22,8 @@ const RetrievePage = () => {
         }
     }, []);
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.code === 'Enter') getSynonyms().then(() => {});
+    const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.code === 'Enter') await getSynonyms();
     }
 
     const clearAll = () => {

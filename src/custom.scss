@@ -1,13 +1,4 @@
-$black-50: rgba(0, 0, 0, 0.02);
-$black-100: rgba(0, 0, 0, 0.04);
-$black-200: rgba(0, 0, 0, 0.08);
-$black-300: rgba(0, 0, 0, 0.13);
-$black-400: rgba(0, 0, 0, 0.26);
-$black-500: rgba(0, 0, 0, 0.38);
-$black-600: rgba(0, 0, 0, 0.54);
-$black-700: rgba(0, 0, 0, 0.62);
-$black-800: rgba(0, 0, 0, 0.74);
-$black-900: rgba(0, 0, 0, 0.87);
+$black-54: rgba(0, 0, 0, 0.54);
 
 /*
     Redefine spacing. You can now use
@@ -72,21 +63,6 @@ $spacers: (
         '36': (
                 $spacer * 36,
         ),
-        '40': (
-                $spacer * 40,
-        ),
-        '48': (
-                $spacer * 48,
-        ),
-        '60': (
-                $spacer * 60,
-        ),
-        '72': (
-                $spacer * 72,
-        ),
-        '150': (
-                $spacer * 150,
-        ),
 );
 
 @import '~bootstrap/scss/bootstrap.scss';
@@ -102,7 +78,7 @@ body {
   background-color: white;
   box-shadow: none;
   &--focus {
-    box-shadow: 0px 1px 6px rgb(64 60 67 / 20%);
+    box-shadow: 0 1px 6px rgb(64 60 67 / 20%);
     background-color: white;
   }
   input {
@@ -111,7 +87,7 @@ body {
       outline: none;
       box-shadow: none;
       .search-input {
-        box-shadow: 0px 1px 6px rgb(64 60 67 / 20%);
+        box-shadow: 0 1px 6px rgb(64 60 67 / 20%);
       }
     }
   }
@@ -128,13 +104,13 @@ body {
     }
   }
   .btn-close {
-    color: rgba(0, 0, 0, 0.54);
+    color: $black-54;
     box-shadow: none;
   }
 }
 
 .text-black-600 {
-  color: rgba(0, 0, 0, 0.54);
+  color: $black-54;
 }
 
 .bg-synonym {
@@ -157,14 +133,14 @@ body {
   }
 
   &__item {
-    color: $black-800;
+    color: $gray-900;
     font-weight: 600;
     align-items: center;
     width: 100%;
     border-radius: 0 48px 48px 0;
     &:hover {
-      background: $black-100;
-      color: $black-800;
+      background: rgba(0, 0, 0, 0.04);
+      color: $gray-900;
     }
   }
   .active {

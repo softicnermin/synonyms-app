@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import NavigationSidebar from "./NavigationSidebar";
+import NavigationSidebar from "../components/NavigationSidebar";
 import { BrowserRouter} from "react-router-dom";
 
 describe('NavigationSidebar', () => {

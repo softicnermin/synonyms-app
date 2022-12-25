@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import SynonymsList from "./SynonymsList";
+import SynonymsList from "../components/SynonymsList";
 
 describe('SynonymList', () => {
     test('should render the synonyms list with one item', function () {
