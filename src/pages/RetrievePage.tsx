@@ -78,7 +78,7 @@ const RetrievePage = () => {
                     Need help finding the perfect word?
                 </h4>
                 <span className="p-12">
-                    Enter a word and explore it`&apos;s synonyms
+                    Enter a word and explore it&apos;s synonyms
                 </span>
             </div>
             <div className="search-container">
