@@ -40,9 +40,7 @@
       "sourceType": "module"
     },
     "plugins": ["react", "@typescript-eslint"],
-    "rules": {
-      "@typescript-eslint/no-explicit-any": "off"
-    },
+    "rules": {},
     "overrides": []
   },
   "browserslist": {

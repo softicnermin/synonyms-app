@@ -54,17 +54,18 @@ const RetrievePage = () => {
             const data = await response.json();
 
             if (!response.ok) {
-                setError(`Error: ${response.status}`);
-                return;
+                throw new Error(response.status.toString());
             }
             if (data.synonyms.length === 0) {
                 setMessage('No synonyms found!');
             }
             setSynonyms(data.synonyms);
             setIsLoading(false);
-        } catch (err: any) {
-            if (typeof err.message === 'string')
-            setError(err.toString());
+        } catch (error) {
+            let message = 'Unknown Error'
+            if (error instanceof Error) message = error.message
+            else message = String(error);
+            setError(message);
             setIsLoading(false);
         }
     };

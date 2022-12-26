@@ -37,8 +37,7 @@ const EntryPage = () => {
             const data = await response.json();
 
             if (!response.ok) {
-                setError(`Error: ${response.status}`);
-                return;
+                throw new Error(response.status.toString());
             }
 
             setMessage(data.message);
@@ -46,8 +45,11 @@ const EntryPage = () => {
             setError('');
             setSynonym('');
             setIsSaving(false);
-        } catch (err: any) {
-            setError(err.toString());
+        } catch (error) {
+            let message = 'Unknown Error'
+            if (error instanceof Error) message = error.message
+            else message = String(error);
+            setError(message);
             setIsSaving(false);
         }
     };
