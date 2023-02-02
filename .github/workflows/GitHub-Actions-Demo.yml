@@ -19,7 +19,7 @@ jobs:
         uses: devops-infra/action-pull-request@v0.5.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_branch: master
+          source_branch: update-browserslist
           target_branch: master
           title: Update supportedBrowsers.js
           template: .github/PULL_REQUEST_TEMPLATE.md
