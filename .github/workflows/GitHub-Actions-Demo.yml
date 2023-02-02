@@ -16,21 +16,16 @@ jobs:
       - run: echo "export const list = $(npx browserslist --json);" >> supportedBrowsers.js
       - run: cat supportedBrowsers.js
       - name: pull-request
-        uses: repo-sync/pull-request@v2
+        uses: gr2m/create-or-update-pull-request-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          source_branch: ""                                 # If blank, default: triggered branch
-          destination_branch: "master"                      # If blank, default: master
-          pr_title: "Pulling ${{ github.ref }} into master" # Title of pull request
-          pr_body: |                                        # Full markdown support, requires pr_title to be set
-            :crown: *An automated PR*
-
-            _Created by [repo-sync/pull-request](https://github.com/repo-sync/pull-request)_
-          pr_template: ".github/PULL_REQUEST_TEMPLATE.md"   # Path to pull request template, requires pr_title to be set, excludes pr_body
-          pr_reviewer: "softicnermin"                         # Comma-separated list (no spaces)
-          pr_assignee: "softicnermin"                         # Comma-separated list (no spaces)
-          pr_label: "auto-pr"                               # Comma-separated list (no spaces)
-          pr_milestone: "Milestone 1"                       # Milestone name
-          pr_draft: true                                    # Creates pull request as draft
-          pr_allow_empty: true                              # Creates pull request even if there are no changes
-          github_token: ${{ secrets.GITHUB_TOKEN }}      # If blank, default: secrets.GITHUB_TOKEN
+          title: "My pull request title"
+          body: "My pull request body"
+          branch: "my-pull-request-base-branch"
+          path: "lib/"
+          commit-message: "My commit message for uncommitted changes in lib/ folder"
+          author: "Nermin <softicnermin@gmail.com>"
+          assignees: softicnermin
+          update-pull-request-title-and-body: false
       - run: echo "🍏 This job's status is ${{ job.status }}."
