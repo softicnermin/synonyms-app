@@ -11,6 +11,7 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "bootstrap": "5.2.3",
+    "browserslist-useragent-regexp": "^4.0.0",
     "classnames": "^2.3.2",
     "jest": "^29.3.1",
     "react": "^18.2.0",
@@ -26,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "supportedBrowsers": "echo \"export const regExp = $(browserslist-useragent-regexp --allowHigherVersions);\nexport const list = $(npx browserslist --json);\" > supportedBrowsers.js"
   },
   "eslintConfig": {
     "extends": [
@@ -39,21 +41,12 @@
       "ecmaVersion": "latest",
       "sourceType": "module"
     },
-    "plugins": ["react", "@typescript-eslint"],
+    "plugins": [
+      "react",
+      "@typescript-eslint"
+    ],
     "rules": {},
     "overrides": []
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {}
 }
