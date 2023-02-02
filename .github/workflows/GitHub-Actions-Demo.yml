@@ -23,7 +23,6 @@ jobs:
           title: "My pull request title"
           body: "My pull request body"
           branch: "my-pull-request-base-branch"
-          path: "lib/"
           commit-message: "My commit message for uncommitted changes in lib/ folder"
           author: "Nermin <softicnermin@gmail.com>"
           assignees: softicnermin
