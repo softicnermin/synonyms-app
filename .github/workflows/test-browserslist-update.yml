@@ -1,1 +1,6 @@
-
+name: Browserlist update 2
+run-name: ${{ github.actor }} update our browserslist 
+on:
+  schedule:
+  - cron: '0 2 1 * *'
+  workflow_dispatch:
