@@ -14,6 +14,8 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+      - run: pwd
+      - run: ls -all
       - run: npx update-browserslist-db@latest
       - run: echo "export const regExp = $(npx browserslist-useragent-regexp --allowHigherVersions);" > supportedBrowsers.js
       - run: echo "export const list = $(npx browserslist --json);" >> supportedBrowsers.js
