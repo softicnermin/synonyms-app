@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 defaults:
     run:
-      working-directory: ${{ github.workspace }}/public
+      working-directory: ${{ github.GITHUB_WORKSPACE }}/public
 jobs:
   Browserslist-Update:
     runs-on: ubuntu-latest
