@@ -4,8 +4,6 @@ on:
   schedule:
   - cron: '0 2 1 * *'
   workflow_dispatch:
-env:
-  working-directory: ./src
 jobs:
   Browserslist-Update:
     runs-on: ubuntu-latest
