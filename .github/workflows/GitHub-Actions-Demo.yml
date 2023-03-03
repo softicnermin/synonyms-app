@@ -27,5 +27,6 @@ jobs:
           body: "Update"
           branch: "browserslist-update-request-base-branch"
           commit-message: "Update browserslist"
+          reviewers: softicnermin
           update-pull-request-title-and-body: false
       - run: echo "🍏 This job's status is ${{ job.status }}."
