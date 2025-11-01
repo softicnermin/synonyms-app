@@ -1,25 +1,26 @@
-export const regExp = /Trident\/[78]\.0|Edge?\/(13[89]|1[4-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Firefox\/(14[1-9]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Chrom(ium|e)\/(10[5-9]|1[1-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Maci.+ Version\/(18\.([5-9]|\d{2,})|(19|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(12\d|1[3-9]\d|[2-9]\d{2}|\d{4,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(18[._]([5-9]|\d{2,})|(19|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Opera Mini|Android:?[ /-](14\d|1[5-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|(Black[Bb]er{2}y|B{2}10).+Version\/([1-9]\d|\d{3,})\.\d+\.\d+|Mobile Safari.+OPR\/([89]\d|\d{3,})\.\d+\.\d+|Android.+Firefox\/(14[2-9]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(14\d|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|IEMobile[ /](1[1-9]|[2-9]\d|\d{3,})\.\d+|Android.+(UC? ?Browser|UCWEB|U3)[ /]?(15\.([5-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})\.\d+)\.\d+|SamsungBrowser\/(2[89]|[3-9]\d|\d{3,})\.\d+|Android.+MQ{2}Browser\/(14(\.(9|\d{2,})|)|(1[5-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|baidubrowser[\s/](13(\.(5[2-9]|[6-9]\d|\d{3,})|)|(1[4-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|K[Aa][Ii]OS\/(3\.\d+|([4-9]|\d{2,})\.\d+)(\.\d+|)/;
+export const regExp = /Trident\/[78]\.0|Edge?\/(139|1[4-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Firefox\/(14[2-9]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Chrom(ium|e)\/(109|1[1-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Maci.+ Version\/(2[6-9]|[3-9]\d|\d{3,})\.\d+([,.]\d+|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(12[2-9]|1[3-9]\d|[2-9]\d{2}|\d{4,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(18[._]([5-9]|\d{2,})|(19|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Opera Mini|Android:?[ /-](14[1-9]|1[5-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|(Black[Bb]er{2}y|B{2}10).+Version\/([1-9]\d|\d{3,})\.\d+\.\d+|Mobile Safari.+OPR\/([89]\d|\d{3,})\.\d+\.\d+|Android.+Firefox\/(14[3-9]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(14[1-9]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|IEMobile[ /](1[1-9]|[2-9]\d|\d{3,})\.\d+|Android.+(UC? ?Browser|UCWEB|U3)[ /]?(15\.([5-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})\.\d+)\.\d+|SamsungBrowser\/(2[89]|[3-9]\d|\d{3,})\.\d+|Android.+MQ{2}Browser\/(14(\.(9|\d{2,})|)|(1[5-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|baidubrowser[\s/](13(\.(5[2-9]|[6-9]\d|\d{3,})|)|(1[4-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|K[Aa][Ii]OS\/(3\.\d+|([4-9]|\d{2,})\.\d+)(\.\d+|)/;
 export const list = {
   "browsers": [
-    "and_chr 140",
-    "and_ff 142",
+    "and_chr 141",
+    "and_ff 143",
     "and_qq 14.9",
     "and_uc 15.5",
-    "android 140",
+    "android 141",
     "baidu 13.52",
     "bb 10",
+    "chrome 141",
     "chrome 140",
     "chrome 139",
     "chrome 138",
-    "chrome 137",
+    "chrome 134",
+    "chrome 126",
     "chrome 112",
     "chrome 109",
-    "chrome 105",
+    "edge 141",
     "edge 140",
     "edge 139",
-    "edge 138",
-    "firefox 143",
-    "firefox 141",
+    "firefox 144",
+    "firefox 142",
     "ie 11",
     "ie_mob 11",
     "ios_saf 26.0",
@@ -28,9 +29,7 @@ export const list = {
     "op_mini all",
     "op_mob 80",
     "opera 122",
-    "opera 120",
     "safari 26.0",
-    "safari 18.5-18.6",
     "samsung 28"
   ]
 };
