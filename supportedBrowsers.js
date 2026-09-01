@@ -1,2 +1,36 @@
-export const regExp = undefined;
-export const list = undefined;
+export const regExp = /Trident\/[78]\.0|Edge?\/(149|1[5-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Firefox\/(15[2-9]|1[6-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Chrom(ium|e)\/(109|1[1-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Maci.+ Version\/(26\.([5-9]|\d{2,})|(2[7-9]|[3-9]\d|\d{3,})\.\d+)([,.]\d+|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(13[1-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(18[._]([5-9]|\d{2,})|(19|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Opera Mini|Android:?[ /-](15[1-9]|1[6-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|(Black[Bb]er{2}y|B{2}10).+Version\/([1-9]\d|\d{3,})\.\d+\.\d+|Mobile Safari.+OPR\/([89]\d|\d{3,})\.\d+\.\d+|Android.+Firefox\/(15[3-9]|1[6-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(15[1-9]|1[6-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|IEMobile[ /](1[1-9]|[2-9]\d|\d{3,})\.\d+|Android.+(UC? ?Browser|UCWEB|U3)[ /]?(15\.([5-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})\.\d+)\.\d+|SamsungBrowser\/([3-9]\d|\d{3,})\.\d+|Android.+MQ{2}Browser\/(14(\.(9|\d{2,})|)|(1[5-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|baidubrowser[\s/](13(\.(5[2-9]|[6-9]\d|\d{3,})|)|(1[4-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|K[Aa][Ii]OS\/(3\.\d+|([4-9]|\d{2,})\.\d+)(\.\d+|)/;
+export const list = {
+  "browsers": [
+    "and_chr 151",
+    "and_ff 153",
+    "and_qq 14.9",
+    "and_uc 15.5",
+    "android 151",
+    "baidu 13.52",
+    "bb 10",
+    "chrome 151",
+    "chrome 150",
+    "chrome 149",
+    "chrome 148",
+    "chrome 145",
+    "chrome 120",
+    "chrome 109",
+    "edge 151",
+    "edge 150",
+    "edge 149",
+    "firefox 154",
+    "firefox 152",
+    "ie 11",
+    "ie_mob 11",
+    "ios_saf 26.6",
+    "ios_saf 26.5",
+    "ios_saf 18.5-18.7",
+    "kaios 3.0-3.1",
+    "op_mini all",
+    "op_mob 80",
+    "opera 131",
+    "safari 26.6",
+    "safari 26.5",
+    "samsung 30"
+  ]
+};
